@@ -36,43 +36,45 @@ namespace demoXML
             //Console.WriteLine("Table created by ReadXml is called {0}", thisDataSet.Tables[0].TableName);
             //Console.Write("Program finished,press Enter/Return to continue:");
             //Console.ReadKey();
-            string[] cc = { "a", "b", "c", "d", "e", "f" };
-            List<peopel> list = new List<peopel>();
-            for (int i = 0; i < 4; i++)
-            {
-                list.Add(new peopel
-                {
-                    name = "wangwei" + i,
-                    sex = i % 2 == 0 ? "男" : "女",
-                    age = i * 6,
-                    tel = "1860288587" + i
-                });
-            }
+            //string[] cc = { "a", "b", "c", "d", "e", "f" };
+            //List<peopel> list = new List<peopel>();
+            //for (int i = 0; i < 4; i++)
+            //{
+            //    list.Add(new peopel
+            //    {
+            //        name = "wangwei" + i,
+            //        sex = i % 2 == 0 ? "男" : "女",
+            //        age = i * 6,
+            //        tel = "1860288587" + i
+            //    });
+            //}
 
             //string st = string.Format("a:{0},b:{1},c:{2}", list.ToArray());
             //Console.WriteLine(st);
 
-            foreach (var item in list)
-            {
-                Type type = item.GetType();
-                PropertyInfo[] propertyInfos = type.GetProperties();
-                List<string> strList = new List<string>();
-                foreach (PropertyInfo info in propertyInfos)
-                {
-                    //Console.WriteLine(info.Name + ":" + ((extArr)info.GetCustomAttribute(typeof(extArr))).NoRead);
-                    extArr _extattr = (extArr)info.GetCustomAttribute(typeof(extArr));
-                    if (_extattr == null || !_extattr.NoRead)
-                    {
-                        object ccc = info.GetValue(item, null) == null ? "" : info.GetValue(item, null);
-                        strList.Add(ccc.ToString());
-                    }
-                }
-                var _attr = type.GetCustomAttributes();
+            //foreach (var item in list)
+            //{
+            //    Type type = item.GetType();
+            //    PropertyInfo[] propertyInfos = type.GetProperties();
+            //    List<string> strList = new List<string>();
+            //    foreach (PropertyInfo info in propertyInfos)
+            //    {
+            //        //Console.WriteLine(info.Name + ":" + ((extArr)info.GetCustomAttribute(typeof(extArr))).NoRead);
+            //        extArr _extattr = (extArr)info.GetCustomAttribute(typeof(extArr));
+            //        if (_extattr == null || !_extattr.NoRead)
+            //        {
+            //            object ccc = info.GetValue(item, null) == null ? "" : info.GetValue(item, null);
+            //            strList.Add(ccc.ToString());
+            //        }
+            //    }
+            //    var _attr = type.GetCustomAttributes();
 
-                string st = string.Format("a:{0},b:{1},c:{2}", strList.ToArray());
-                Console.WriteLine(st);
+            //    string st = string.Format("a:{0},b:{1},c:{2}", strList.ToArray());
+            //    Console.WriteLine(st);
 
-            }
+            //}
+            
+
             Console.ReadKey();
 
         }
