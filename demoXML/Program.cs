@@ -76,6 +76,8 @@ namespace demoXML
 
             XmlDocument doc = new XmlDocument();
 
+            doc.Load("");
+
             Console.ReadKey();
 
         }
