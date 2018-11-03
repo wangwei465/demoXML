@@ -76,7 +76,7 @@ namespace demoXML
 
             XmlDocument doc = new XmlDocument();
 
-            doc.Load("");
+            doc.Load("book.xml");
 
             Console.ReadKey();
 
