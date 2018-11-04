@@ -73,7 +73,60 @@ namespace demoXML
             //    Console.WriteLine(st);
 
             //}
-            
+
+
+
+            //if(!File.Exists("tableUpate.xml"))
+            //    createXML();
+
+            //XmlDocument doc = new XmlDocument();
+            //doc.Load("tableUpate.xml");
+
+            //XmlElement elem = doc.CreateElement("table");
+            //elem.InnerText = DateTime.Now.ToString();
+            ////XmlText text = doc.CreateTextNode(DateTime.Now.ToString());
+
+            //doc.DocumentElement.AppendChild(elem);
+            ////doc.DocumentElement.LastChild.AppendChild(text);
+            //elem.SetAttribute("ID", "User");
+            ////elem.InnerText = DateTime.Now.ToString();
+            ////doc.AppendChild.LastChild(elem);
+
+            //XmlElement elem1 = doc.CreateElement("table");
+            //elem1.InnerText = DateTime.Now.ToString();
+            //doc.DocumentElement.AppendChild(elem1);
+            //elem1.SetAttribute("ID", "stutent");
+
+            //doc.Save("tableUpate.xml");
+
+
+            #region 读取
+            XmlDocument doc = new XmlDocument();
+            doc.Load("tableUpate.xml");
+
+            //int c= doc.SelectNodes("root/table").Count;
+            string val= doc.SelectSingleNode("root/table").Attributes["ID"].Value;
+            XmlElement elem = doc.GetElementById("Teacher");
+
+            XmlNode node = doc.SelectSingleNode("root/table");
+            #endregion
+            XmlAttributeCollection att = node.Attributes;
+
+
+
+            XmlNodeList nodelist = doc.SelectNodes("root/table");
+            foreach (XmlNode item in nodelist)
+            {
+                foreach (XmlAttribute attr in item.Attributes)
+                {
+                    if (attr.Value == "Teacher")
+                        Console.WriteLine(item.InnerText);
+                    else
+                        Console.WriteLine(false);
+                }
+            }
+
+            Console.WriteLine(elem);
 
             Console.ReadKey();
 
@@ -91,6 +144,7 @@ namespace demoXML
             var value = "";
             try
             {
+
                 var doc = new XmlDocument();
                 doc.Load(path);
                 var xn = doc.SelectSingleNode(node);
@@ -104,12 +158,28 @@ namespace demoXML
             return value;
         }
 
+
+        private static void createXML()
+        {
+            XmlDocument doc = new XmlDocument();
+            XmlDeclaration declara = doc.CreateXmlDeclaration("1.0", "utf-8", null);
+            doc.AppendChild(declara);
+
+            XmlElement root = doc.CreateElement("root");
+            doc.AppendChild(root);
+            doc.Save("tableUpate.xml");
+        }
+
     }
+
+
+
+
 
     public class peopel
     {
         public string name { get; set; }
-        
+
         public string sex { get; set; }
         [extArr(true)]
         public int age { get; set; }
