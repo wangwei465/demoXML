@@ -73,10 +73,7 @@ namespace demoXML
             //    Console.WriteLine(st);
 
             //}
-
-            XmlDocument doc = new XmlDocument();
-
-            doc.Load("");
+            
 
             Console.ReadKey();
 
